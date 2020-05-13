@@ -8,9 +8,9 @@ const zmq = require("zeromq")
 const iota = composeAPI({
   provider: 'http://127.0.0.1:15265'
 })
-let promoteaddress = 'PROMOTETANGLEBAYPROMOTETANGLEBAYPROMOTETANGLEBAYPROMOTETANGLEBAYPROMOTETANGLEBAYP'
-let promotetag = 'PROMOTETANGLEBAY'
-let promotemessage = asciiToTrytes('PROMOTETANGLEBAY')
+let promoteaddress = 'COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9999999'
+let promotetag = 'COO9NFIRMINATOR'
+let promotemessage = asciiToTrytes('In difficult times, we should all come together as a community and rejoice. Fundamentally, nothing has changed. The IOTA Foundation is tirelessly doing everything to get the Tangle production ready. Let’s celebrate technical advances and prove the naysayers wrong. IOTA will deliver as it always has!')
 
 //replace in original txs
 //don't replace if replacetag = ''
