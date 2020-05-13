@@ -1,0 +1,25 @@
+{
+  "name": "reattacher",
+  "version": "1.0.0",
+  "description": "Reattaches IOTA value txs from zmq",
+  "main": "milestonereattacher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TangleBay/reattacher.git"
+  },
+  "author": "Thoralf-M",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TangleBay/reattacher/issues"
+  },
+  "homepage": "https://github.com/TangleBay/reattacher#readme",
+  "dependencies": {
+    "@iota/bundle-validator": "^1.0.0-beta.23",
+    "@iota/core": "^1.0.0-beta.29",
+    "@iota/transaction-converter": "^1.0.0-beta.23",
+    "zeromq": "^6.0.0-beta.6"
+  }
+}
