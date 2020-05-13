@@ -2,20 +2,20 @@
   "name": "coo-nfirminator",
   "version": "1.0.0",
   "description": "Reattaches IOTA value txs from zmq",
-  "main": "milestonereattacher.js",
+  "main": "coo-nfirminator.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TangleBay/reattacher.git"
+    "url": "git+https://github.com/TangleBay/coo-nfirminator.git"
   },
   "author": "Thoralf-M",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TangleBay/reattacher/issues"
+    "url": "https://github.com/TangleBay/coo-nfirminator/issues"
   },
-  "homepage": "https://github.com/TangleBay/reattacher#readme",
+  "homepage": "https://github.com/TangleBay/coo-nfirminator#readme",
   "dependencies": {
     "@iota/bundle-validator": "^1.0.0-beta.23",
     "@iota/converter": "^1.0.0-beta.23",
