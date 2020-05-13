@@ -1,21 +1,21 @@
 {
-  "name": "coo-nfirminator",
+  "name": "coonfirminator",
   "version": "1.0.0",
   "description": "Reattaches IOTA value txs from zmq",
-  "main": "coo-nfirminator.js",
+  "main": "coonfirminator.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TangleBay/coo-nfirminator.git"
+    "url": "git+https://github.com/TangleBay/coonfirminator.git"
   },
   "author": "Thoralf-M",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TangleBay/coo-nfirminator/issues"
+    "url": "https://github.com/TangleBay/coonfirminator/issues"
   },
-  "homepage": "https://github.com/TangleBay/coo-nfirminator#readme",
+  "homepage": "https://github.com/TangleBay/coonfirminator#readme",
   "dependencies": {
     "@iota/bundle-validator": "^1.0.0-beta.23",
     "@iota/converter": "^1.0.0-beta.23",
