@@ -1,5 +1,5 @@
 {
-  "name": "reattacher",
+  "name": "coo-nfirminator",
   "version": "1.0.0",
   "description": "Reattaches IOTA value txs from zmq",
   "main": "milestonereattacher.js",
