@@ -86,7 +86,13 @@ function sortBundle(txObjects) {
 
 async function checkBundleInputs(txhash) {
   try {
+    //wait half a second so nodes have the time to process the tx
+    await new Promise(resolve => setTimeout(resolve, 500));
     let txObject = await iota.getTransactionObjects([txhash]);
+    if(txObject[0].value == 0){
+      console.log(`Bundle for ${txhash} not found`);
+      return
+    }
     let bundleObjects = await iota.findTransactionObjects({ bundles: [txObject[0].bundle] })
     let sortedBundle = sortBundle(bundleObjects)
     //validate bundle
