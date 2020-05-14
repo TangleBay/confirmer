@@ -1,4 +1,3 @@
-
 const { asTransactionObject, asTransactionTrytes } = require('@iota/transaction-converter');
 const bundleValidator = require('@iota/bundle-validator');
 const { composeAPI } = require('@iota/core')
