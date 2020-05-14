@@ -2,4 +2,4 @@
 
 `npm i`
 
-`node milestonereattacher.js`
+`node confirmer.js`

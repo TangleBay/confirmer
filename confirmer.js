@@ -7,15 +7,15 @@ const zmq = require("zeromq")
 const iota = composeAPI({
   provider: 'http://127.0.0.1:15265'
 })
-let promoteaddress = 'COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9999999'
-let promotetag = 'COO9NFIRMINATOR'
-let promotemessage = asciiToTrytes('COONFIRMINATOR')
+let promoteaddress = 'CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER99'
+let promotetag = 'CONFIRMER'
+let promotemessage = asciiToTrytes('CONFIRMER')
 
 //replace in original txs
 //don't replace if replacetag = ''
 let replacetag = ''
 //a random message from the array will be used, don't replace if replaymessages = []
-let replaymessages = []
+let replaymessages = ["In difficult times, we should all come together as a community and rejoice. Fundamentally, nothing has changed. The IOTA Foundation is tirelessly doing everything to get the Tangle production ready. Let's celebrate technical advances and prove the naysayers wrong. IOTA will deliver as it always has!"]
 let transfers = [{
   value: 0,
   address: promoteaddress,
@@ -37,7 +37,7 @@ let amountPromoteTxs = 14
 let cacheSize = 50
 let bundleCache = []
 
-async function run() {
+async function listen() {
   const sock = new zmq.Subscriber
   for (node of tcpNodes) {
     sock.connect(node)
@@ -70,7 +70,7 @@ async function run() {
     }
   }
 }
-run()
+listen()
 
 function sortBundle(txObjects) {
   let filtered = txObjects.filter((obj, index, self) =>
@@ -110,11 +110,11 @@ async function checkBundleInputs(txhash) {
         }
       }
     }
-    console.log("New bundle to reattach: https://thetangle.org/transaction/" + txhash);
+    console.log("New bundle to reattach: https://thetangle.org/bundle/" + sortedBundle[0].bundle);
     let bundleTrytes = sortedBundle.map(tx => asTransactionTrytes(tx))
     bundles[sortedBundle[0].bundle] = { bundlehash: sortedBundle[0].bundle, trytes: bundleTrytes.reverse(), lastTime: 0, tries: 0 }
   } catch (err) {
-    console.log(err);
+    console.log("checkBundleInputs:", err);
   }
 }
 
@@ -167,7 +167,7 @@ async function spam() {
         }
       }
     } catch (e) {
-      console.log(e)
+      console.log("spam:", e)
     }
   }
 }
@@ -191,15 +191,15 @@ async function reattach(trytes) {
     })
     let attachedTrytes = await iota.attachToTangle(latestMilestone, latestMilestone, 14, trytes)
     await iota.storeAndBroadcast(attachedTrytes)
-    let replayhash = asTransactionObject(attachedTrytes[0]).hash
-    reattachedTails.push(replayhash)
+    let tailtx = attachedTrytes.map(tx => asTransactionObject(tx)).filter(t => t.currentIndex == 0)[0].hash
+    reattachedTails.push(tailtx)
     if (reattachedTails.length > 2) {
       reattachedTails.shift()
     }
-    console.log('Reattached transaction: https://thetangle.org/transaction/' + replayhash)
-    return replayhash
+    console.log('Reattached tx: https://thetangle.org/transaction/' + tailtx)
+    return tailtx
   } catch (e) {
-    console.error(e)
+    console.error("reattach", e)
   }
 }
 
@@ -208,7 +208,7 @@ async function sendPromoteTxs(txhash, amount) {
     let trytes = await iota.prepareTransfers(promoteaddress, transfers)
     if (amount < 5) {
       if (amount % 2 == 0) {
-        tips = await iota.getTransactionsToApprove(3, txhash)
+        tips = await iota.getTransactionsToApprove(3)
         attachedTrytes = await iota.attachToTangle(txhash, tips.branchTransaction, 14, trytes)
       } else {
         attachedTrytes = await iota.attachToTangle(txhash, tips.trunkTransaction, 14, trytes)
@@ -217,7 +217,7 @@ async function sendPromoteTxs(txhash, amount) {
       attachedTrytes = await iota.attachToTangle(txhash, latestMilestone, 14, trytes)
     }
     await iota.storeAndBroadcast(attachedTrytes)
-    if(amount == amountPromoteTxs){
+    if (amount == amountPromoteTxs) {
       console.log('First promotetx: https://thetangle.org/transaction/' + asTransactionObject(attachedTrytes[0]).hash)
     }
     amount--
@@ -226,6 +226,6 @@ async function sendPromoteTxs(txhash, amount) {
       await sendPromoteTxs(txhash, amount)
     }
   } catch (e) {
-    console.log(e)
+    console.log("sendPromoteTxs", e)
   }
 }
