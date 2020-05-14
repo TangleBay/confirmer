@@ -1,21 +1,21 @@
 {
-  "name": "coonfirminator",
+  "name": "confirmer",
   "version": "1.0.0",
   "description": "Reattaches IOTA value txs from zmq",
-  "main": "coonfirminator.js",
+  "main": "confirmer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TangleBay/coonfirminator.git"
+    "url": "git+https://github.com/TangleBay/confirmer.git"
   },
   "author": "Thoralf-M",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TangleBay/coonfirminator/issues"
+    "url": "https://github.com/TangleBay/confirmer/issues"
   },
-  "homepage": "https://github.com/TangleBay/coonfirminator#readme",
+  "homepage": "https://github.com/TangleBay/confirmer#readme",
   "dependencies": {
     "@iota/bundle-validator": "^1.0.0-beta.23",
     "@iota/converter": "^1.0.0-beta.23",
