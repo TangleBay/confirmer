@@ -5,11 +5,11 @@ const { asciiToTrytes } = require('@iota/converter')
 const zmq = require("zeromq")
 
 const iota = composeAPI({
-  provider: 'http://127.0.0.1:15265'
+  provider: 'http://127.0.0.1:14265'
 })
-let promoteaddress = 'COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9COONFIRMINATOR9999999'
-let promotetag = 'COO9NFIRMINATOR'
-let promotemessage = asciiToTrytes('COONFIRMINATOR')
+let promoteaddress = 'CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER99'
+let promotetag = 'CONFIRMER'
+let promotemessage = asciiToTrytes('CONFIRMER')
 
 //replace in original txs
 //don't replace if replacetag = ''
