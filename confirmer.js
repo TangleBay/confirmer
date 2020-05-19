@@ -157,7 +157,9 @@ async function spam() {
           if (inclusionStates.indexOf(true) == -1) {
             //reattach
             let tail = await reattach(bundle.trytes)
-            await sendPromoteTxs(tail, amountPromoteTxs)
+            if(typeof tail != 'undefined'){
+              await sendPromoteTxs(tail, amountPromoteTxs)
+            }
             //update time
             bundles[bundlehash].lastTime = Date.now()
             //wait 1s per tx ()
