@@ -15,7 +15,7 @@ let promotemessage = asciiToTrytes('CONFIRMER')
 //don't replace if replacetag = ''
 let replacetag = ''
 //a random message from the array will be used, don't replace if replaymessages = []
-let replaymessages = ["In difficult times, we should all come together as a community and rejoice. Fundamentally, nothing has changed. The IOTA Foundation is tirelessly doing everything to get the Tangle production ready. Let's celebrate technical advances and prove the naysayers wrong. IOTA will deliver as it always has!"]
+let replaymessages = []
 let transfers = [{
   value: 0,
   address: promoteaddress,
@@ -55,8 +55,8 @@ async function listen() {
         break
       case 'tx':
         if (data[6] == 0 && blockedTags.indexOf(data[12]) == -1 && blockedAddresses.indexOf(data[2]) == -1) {
-          //value > 0; index == 0; bundlesize <= maxBundleSize; check if not already known
-          if (data[3] > 0 && data[6] == 0 && data[7] < maxBundleSize && !(data[8] in bundles)) {
+          //value != 0; index == 0; bundlesize <= maxBundleSize; check if not already known
+          if (data[3] != 0 && data[6] == 0 && data[7] < maxBundleSize && !(data[8] in bundles)) {
             //filter already known bundles
             if (bundleCache.indexOf(data[8]) == -1) {
               bundleCache.push(data[8])
