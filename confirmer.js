@@ -5,7 +5,7 @@ const { asciiToTrytes } = require('@iota/converter')
 const zmq = require("zeromq")
 
 const iota = composeAPI({
-  provider: 'http://127.0.0.1:14265'
+  provider: 'https://swarm.tanglebay.org'
 })
 let promoteaddress = 'CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER9CONFIRMER99'
 let promotetag = 'CONFIRMER'
@@ -13,7 +13,7 @@ let promotemessage = asciiToTrytes('CONFIRMER')
 
 //replace in original txs
 //don't replace if replacetag = ''
-let replacetag = ''
+let replacetag = 'TB9CONFIRMER'
 //a random message from the array will be used, don't replace if replaymessages = []
 let replaymessages = []
 let transfers = [{
@@ -29,7 +29,7 @@ let bundles = {}
 let reattachedTails = []
 let reattachmentIntervall = 90000
 let maxReattachTries = 10
-let blockedTags = ['ANDROID9WALLET9TRANSFER9999', 'THE9IOTA9MIXER9BETA99999999', 'TANGLE9BEAT9999999999999999', 'IOTA9FAUCET9999999999999999', 'MINEIOTA9JACKPOT99999999999']
+let blockedTags = ['ANDROID9WALLET9TRANSFER9999', 'THE9IOTA9MIXER9BETA99999999', 'TANGLE9BEAT9999999999999999', 'IOTA9FAUCET9999999999999999', 'MINEIOTA9JACKPOT99999999999', 'MINEIOTADOTCOM9999999999999']
 let blockedAddresses = ['KSNWNNLGLHIBVFMULCEXDQLXMGGVKLACPPDNKSQYLBPPHISXGCNDZHEGCTQII9PRMRB9TXTBZ9BZTOSGW']
 let maxBundleSize = 20
 let amountPromoteTxs = 14
